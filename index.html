@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Descriptivo: La evolución de las especies</title>
+    <style>
+        /* Estilos generales obligatorios: Times New Roman 12 */
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 12pt;
+            line-height: 1.6;
+            color: #000;
+            background-color: #fff;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Estilos para la Carátula Creativa */
+        .caratula {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            min-height: 95vh;
+            height: auto;
+            text-align: center;
+            border: 8px solid #2c3e50;
+            border-style: double;
+            border-radius: 20px;
+            padding: clamp(24px, 5vh, 50px);
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.15);
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            position: relative;
+        }
+
+        .caratula::before {
+            content: '';
+            position: absolute;
+            top: 15px; left: 15px; right: 15px; bottom: 15px;
+            border: 1px solid #7f8c8d;
+            border-radius: 12px;
+            pointer-events: none;
+        }
+
+        .logo-colegio {
+            width: 160px;
+            height: 160px;
+            border: 2px dashed #7f8c8d;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 35px;
+            color: #7f8c8d;
+            font-weight: bold;
+            background-color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .caratula h1 {
+            font-size: 32pt;
+            color: #1a252f;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .caratula h2 {
+            font-size: 20pt;
+            color: #27ae60;
+            margin-bottom: 50px;
+            font-style: italic;
+            font-weight: normal;
+        }
+
+        .datos-autor {
+            font-size: 14pt;
+            margin-top: 30px;
+            border-top: 2px solid #bdc3c7;
+            padding-top: 30px;
+            width: 85%;
+        }
+
+        /* Saltos de página para impresión */
+        .salto-pagina {
+            page-break-after: always;
+            margin-bottom: 50px;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 20px;
+        }
+
+        /* Estilos de contenido */
+        h2.seccion-titulo {
+            color: #2c3e50;
+            border-bottom: 3px solid #34495e;
+            padding-bottom: 8px;
+            margin-top: 40px;
+            font-size: 18pt;
+            text-transform: uppercase;
+        }
+        
+        h3 {
+            color: #2980b9;
+            margin-top: 25px;
+            font-size: 14pt;
+            border-left: 4px solid #2980b9;
+            padding-left: 10px;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+
+        /* Estilos de tabla profesional */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 11pt;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        th, td {
+            border: 1px solid #bdc3c7;
+            padding: 12px 15px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #34495e;
+            color: #ffffff;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        tbody tr:hover {
+            background-color: #f1f2f6;
+        }
+
+        caption {
+            caption-side: top;
+            font-weight: bold;
+            font-style: italic;
+            margin-bottom: 10px;
+            text-align: left;
+            color: #333;
+        }
+
+        /* Listas y viñetas */
+        ul {
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Enlaces del índice */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul.indice-lista {
+            list-style-type: none;
+            padding: 0;
+            font-size: 14pt;
+        }
+        ul.indice-lista li {
+            margin-bottom: 12px;
+            border-bottom: 1px dotted #ccc;
+            padding-bottom: 5px;
+        }
+        ul.indice-lista ul {
+            font-size: 12pt;
+            margin-top: 10px;
+            border: none;
+        }
+
+        /* Cajas para insertar imágenes en Anexos */
+        .anexo-item {
+            margin-bottom: 40px;
+            background-color: #fcfcfc;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        .espacio-imagen {
+            width: 100%;
+            height: 350px;
+            background-color: #f8f9fa;
+            border: 3px dashed #adb5bd;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            margin-top: 15px;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .cita {
+            background-color: #f4f6f7;
+            border-left: 5px solid #e74c3c;
+            padding: 10px 20px;
+            font-style: italic;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================= CARÁTULA ================= -->
+    <div class="caratula">
+        <div class="logo-colegio">
+            <img src="LOGO.PNG" alt="Logo del Colegio" style="max-width: 150px; max-height: 150px; object-fit: contain;">
+        </div>
+        
+        <h2>Proyecto de Indagación Descriptiva</h2>
+        <h1>La Evolución de las Especies:<br>Mecanismos y Evidencias Contemporáneas</h1>
+        
+        <div class="datos-autor">
+            <p><strong>Autor del Proyecto:</strong></p>
+            <p style="font-size: 18pt; font-weight: bold; color: #2c3e50;">Uriel Carrasco Saucedo</p>
+            <p><br><strong>Año Académico:</strong> 2026</p>
+        </div>
+    </div>
+    
+    <div class="salto-pagina"></div>
+
+    <!-- ================= ÍNDICE ================= -->
+    <h2 class="seccion-titulo">Índice</h2>
+    <ul class="indice-lista">
+        <li><a href="#introduccion">1. Introducción</a></li>
+        <li><a href="#problematizacion">2. Problematización</a>
+            <ul style="list-style-type: none;">
+                <li><a href="#pregunta">2.1. Pregunta de indagación</a></li>
+                <li><a href="#objetivo">2.2. Objetivo de indagación</a></li>
+            </ul>
+        </li>
+        <li><a href="#diseno">3. Diseño</a></li>
+        <li><a href="#marco-teorico">4. Marco Teórico y Desarrollo Científico</a></li>
+        <li><a href="#datos">5. Datos e información obtenida</a>
+            <ul style="list-style-type: none;">
+                <li><a href="#caso1">5.1. Caso 1: Adaptación morfológica por factores climáticos (Pinzones)</a></li>
+                <li><a href="#caso2">5.2. Caso 2: Melanismo industrial inducido por contaminación (Polillas)</a></li>
+                <li><a href="#caso3">5.3. Caso 3: Evolución acelerada y salud pública (Resistencia bacteriana)</a></li>
+                <li><a href="#caso4">5.4. Caso 4: Macroevolución y registro fósil (Evolución de los Équidos)</a></li>
+            </ul>
+        </li>
+        <li><a href="#analisis">6. Análisis de datos e información</a></li>
+        <li><a href="#evaluacion">7. Evaluación</a></li>
+        <li><a href="#referencias">8. Referencias bibliográficas</a></li>
+        <li><a href="#anexos">9. Anexos</a></li>
+    </ul>
+
+    <div class="salto-pagina"></div>
+
+    <!-- ================= DESARROLLO DEL PROYECTO ================= -->
+    
+    <h2 id="introduccion" class="seccion-titulo">1. Introducción</h2>
+    <p>El presente proyecto de indagación aborda uno de los paradigmas unificadores más trascendentales de las ciencias biológicas: <strong>la evolución de las especies</strong>. La evolución no es meramente un recuento histórico de la vida en la Tierra, sino un proceso dinámico, medible y continuo que moldea la biodiversidad actual a través de la selección natural, la deriva génica, las mutaciones y el flujo genético.</p>
+    
+    <p><strong>Importancia del proyecto:</strong> La relevancia de esta investigación radica en su profunda concordancia con las prioridades y planes de desarrollo enfocados en la conservación ambiental y la salud pública a nivel local, regional y nacional. Comprender la mecánica evolutiva permite a las naciones diseñar estrategias efectivas frente a crisis contemporáneas severas, tales como la adaptación de especies invasoras, la resiliencia de los ecosistemas ante el cambio climático, y la amenazante proliferación de patógenos multirresistentes (superbacterias). Ignorar las fuerzas evolutivas equivale a diseñar políticas de preservación ecológicas a ciegas.</p>
+    
+    <p><strong>Conocimientos científicos utilizados:</strong> Los principios teóricos y procedimentales de este proyecto se inscriben en el marco de la competencia <em>"Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo"</em>. El análisis se fundamenta en la Teoría Sintética de la Evolución (Neodarwinismo), la cual integra las postulaciones de Charles Darwin y Alfred Russel Wallace sobre la selección natural con la genética mendeliana y la genética de poblaciones moderna. A través de este lente empírico, se analizarán fenotipos, frecuencias alélicas y presiones selectivas.</p>
+
+    <h2 id="problematizacion" class="seccion-titulo">2. Problematización</h2>
+    <p>La naturaleza se encuentra sometida a constantes alteraciones, sean estas de origen natural (fluctuaciones climáticas) o antropogénico (contaminación, uso de fármacos). Estos factores actúan como presiones selectivas que "filtran" a los individuos de una población en función de su aptitud biológica.</p>
+    
+    <h3 id="pregunta">Pregunta de indagación</h3>
+    <div class="cita">
+        ¿De qué manera las diferentes presiones ambientales (como eventos climáticos extremos, contaminación industrial y la aplicación de agentes antimicrobianos) determinan la adaptación morfológica y genética de las especies, evidenciando el proceso evolutivo a corto y largo plazo?
+    </div>
+
+    <h3 id="objetivo">Objetivos de indagación</h3>
+    <ul>
+        <li><strong>Objetivo General:</strong> Describir y comparar el impacto de diversas presiones selectivas en la evolución de distintas especies, mediante el análisis de datos cuantitativos y cualitativos de casos biológicos paradigmáticos.</li>
+        <li><strong>Objetivos Específicos:</strong> 
+            1) Evidenciar los cambios morfológicos direccionales en poblaciones de aves frente a variaciones climáticas. 
+            2) Analizar las variaciones en las frecuencias de fenotipos en insectos debido a la alteración humana de su hábitat. 
+            3) Documentar la microevolución acelerada en organismos procariotas como respuesta al desarrollo farmacológico humano.</li>
+    </ul>
+
+    <h2 id="diseno" class="seccion-titulo">3. Diseño</h2>
+    <p>Para la consecución de los objetivos planteados, se estructuró un diseño de indagación de carácter <strong>descriptivo y comparativo</strong> basado en la recolección, sistematización y análisis de literatura científica primaria y secundaria (análisis documental retrospectivo).</p>
+    
+    <ul>
+        <li><strong>Plan de observaciones:</strong> Se establecieron tres unidades de análisis independientes que representan diferentes taxones (aves, insectos, bacterias) y diferentes presiones ambientales. Para cada uno, se identificó la variable independiente (el factor de presión: sequía, hollín, antibiótico) y la variable dependiente (cambio en el rasgo fenotípico o genotípico en la población a lo largo del tiempo).</li>
+        <li><strong>Base científica del diseño:</strong> Los procedimientos de recolección de datos se basan en los postulados de la ecología de poblaciones y la estadística descriptiva aplicada a la biología. Se asume el principio de que los rasgos hereditarios fluctúan en frecuencia si otorgan ventajas de supervivencia y reproducción (aptitud diferencial).</li>
+        <li><strong>Materiales, herramientas e instrumentos:</strong> 
+            <ul>
+                <li>Equipos de computación con conexión a internet para la minería de datos.</li>
+                <li>Acceso a bases de datos académicas (PubMed, Google Scholar, revistas de ecología).</li>
+                <li>Hojas de cálculo de Microsoft Excel para la tabulación y comparación de frecuencias observadas en los estudios fuente.</li>
+            </ul>
+        </li>
+        <li><strong>Tiempo empleado:</strong> La investigación se desarrolló durante 4 semanas. (Semana 1: Selección de literatura; Semana 2: Extracción y tabulación de datos; Semana 3: Análisis comparativo cruzado; Semana 4: Redacción y formato final).</li>
+        <li><strong>Medidas de seguridad:</strong> Tratándose de una investigación descriptiva basada en el análisis in-silico (en computadora), los riesgos fueron de carácter ergonómico. Se implementó la regla "20-20-20" para prevención de fatiga visual y se mantuvo control sobre la postura durante las sesiones de revisión de literatura prolongadas.</li>
+    </ul>
+
+    <div class="salto-pagina"></div>
+
+    <h2 id="marco-teorico" class="seccion-titulo">4. Marco Teórico y Desarrollo Científico</h2>
+    <p>Para comprender los casos prácticos y los datos presentados en este informe, es imperativo establecer las bases conceptuales de la biología evolutiva. La evolución se define como el proceso mediante el cual los organismos modernos han descendido de antepasados antiguos a través de cambios genéticos (modificación de frecuencias alélicas) en las poblaciones a lo largo de extensos periodos de tiempo.</p>
+
+    <h3>4.1. Teorías Evolutivas: De Lamarck a la Síntesis Moderna</h3>
+    <p>Históricamente, la comprensión científica de la vida ha pasado por distintas etapas:</p>
+    <ul>
+        <li><strong>Lamarckismo (siglo XIX):</strong> Jean-Baptiste Lamarck propuso la herencia de los caracteres adquiridos (por ejemplo, las jirafas estiraban su cuello para alcanzar hojas altas y heredaban ese rasgo a sus crías). Hoy sabemos que esta teoría es incorrecta, pues los cambios físicos adquiridos en vida no modifican el ADN reproductivo.</li>
+        <li><strong>Darwinismo (1859):</strong> Charles Darwin y Alfred Russel Wallace introdujeron de forma independiente el mecanismo de la <strong>selección natural</strong>. Observaron que las poblaciones tienen variaciones naturales, compiten por recursos limitados y solo los "más aptos" logran sobrevivir y reproducirse.</li>
+        <li><strong>Neodarwinismo o Teoría Sintética de la Evolución (siglo XX):</strong> Darwin no conocía sobre genética. Fue en el siglo XX cuando los descubrimientos de Gregor Mendel sobre la herencia y el posterior descubrimiento del ADN se fusionaron con la selección natural. Esta teoría postula que las variaciones sobre las que actúa la naturaleza provienen de mutaciones genéticas aleatorias y de la recombinación cromosómica durante la reproducción sexual.</li>
+    </ul>
+
+    <h3>4.2. Mecanismos de la Evolución</h3>
+    <p>El cambio evolutivo no ocurre de forma mágica, sino que está impulsado por cuatro fuerzas fundamentales que alteran la composición genética de una población:</p>
+    <ul>
+        <li><strong>1. Selección Natural:</strong> Proceso por el cual el ambiente "filtra" a los individuos. Aquellos con rasgos fenotípicos hereditarios que los adaptan mejor a su entorno tienen mayores tasas de supervivencia y descendencia.</li>
+        <li><strong>2. Mutación:</strong> Errores aleatorios en la replicación o transcripción de la secuencia del ADN. Son la fuente primaria y fundamental de toda variación genética nueva.</li>
+        <li><strong>3. Deriva Génica:</strong> Fluctuaciones aleatorias en las frecuencias de los genes de una generación a otra, provocadas por eventos estadísticos al azar (como desastres naturales que eliminan gran parte de una población). Es especialmente drástica en poblaciones pequeñas (efecto cuello de botella).</li>
+        <li><strong>4. Flujo Genético (Migración):</strong> Transferencia de material genético de una población a otra debido al movimiento de individuos fértiles. Aumenta la variabilidad genética.</li>
+    </ul>
+
+    <h3>4.3. Evidencias Científicas de la Evolución</h3>
+    <p>La comunidad científica sostiene el paradigma evolutivo de forma innegable basándose en múltiples disciplinas transversales:</p>
+    <ul>
+        <li><strong>El Registro Fósil:</strong> Proporciona un registro cronológico directo en los estratos geológicos. Muestra transiciones morfológicas claras, como el <em>Archaeopteryx</em> (eslabón entre dinosaurios terópodos y aves) o la transición de los mamíferos terrestres antiguos hasta los cetáceos modernos (ballenas).</li>
+        <li><strong>Anatomía Comparada:</strong> Se observa mediante las <em>estructuras homólogas</em> (órganos con el mismo origen evolutivo pero distinta función, como el brazo humano, la aleta de una ballena y el ala de un murciélago) y las <em>estructuras vestigiales</em> (restos anatómicos que perdieron su función original, como el apéndice o las muelas del juicio en humanos).</li>
+        <li><strong>Biología Molecular y Genética:</strong> Todos los seres vivos del planeta Tierra utilizan exactamente el mismo código genético base (ADN/ARN). El grado de similitud en secuencias de ADN refleja la cercanía de parentesco; por ejemplo, el ser humano comparte aproximadamente un 98.8% de su genoma con los chimpancés, nuestro pariente vivo más cercano.</li>
+        <li><strong>Embriología:</strong> En las primeras etapas de desarrollo embrionario, especies muy distintas (como peces, aves y humanos) presentan características casi idénticas (como hendiduras branquiales y colas), revelando un diseño ancestral común profundamente conservado.</li>
+    </ul>
+
+    <div class="salto-pagina"></div>
+
+    <h2 id="datos" class="seccion-titulo">5. Datos e información obtenida</h2>
+    <p>A continuación, se presentan los datos cuantitativos y cualitativos recopilados, organizados en cuatro casos de estudio que demuestran la evolución en acción bajo diferentes circunstancias temporales y ambientales.</p>
+
+    <h3 id="caso1">5.1. Caso 1: Adaptación morfológica por factores climáticos (Pinzones de Darwin, <em>Geospiza fortis</em>)</h3>
+    <p>El archipiélago de las Galápagos, famoso por inspirar a Charles Darwin, sigue siendo un laboratorio natural invaluable para observar la evolución en tiempo real. Durante décadas, los biólogos evolutivos Peter y Rosemary Grant han estudiado exhaustivamente a las poblaciones de pinzones en la pequeña isla de Daphne Major, especialmente a la especie <em>Geospiza fortis</em> (pinzón terrestre mediano). Su aislamiento geográfico y la ausencia de migración significativa permiten medir con precisión las variaciones poblacionales ante factores puramente ambientales.</p>
+    
+    <p>El estudio documentó cómo fluctuaciones climáticas extremas vinculadas al fenómeno de El Niño (ENOS) actúan como intensas presiones de selección natural. Durante sequías severas, la disponibilidad de semillas pequeñas y blandas desaparece, dejando únicamente semillas grandes y duras de la planta <em>Tribulus</em>. Por el contrario, las épocas de lluvias torrenciales revierten esta ecología. Estas oscilaciones dictan directamente qué características morfológicas del pico garantizan la supervivencia y reproducción en cada periodo, reflejándose rápidamente en la genética y la anatomía de las siguientes generaciones.</p>
+    
+    <table>
+        <caption>Tabla 1: Cambios poblacionales y fenotípicos en Geospiza fortis frente a alteraciones climáticas.</caption>
+        <thead>
+            <tr>
+                <th>Año / Evento Climático</th>
+                <th>Disponibilidad de Alimento</th>
+                <th>Rasgo Físico Favorecido (Seleccionado)</th>
+                <th>Impacto Evolutivo Observable</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1976 (Condiciones normales)</td>
+                <td>Abundancia de semillas pequeñas y suaves.</td>
+                <td>Picos pequeños (menor requerimiento energético).</td>
+                <td>Población estable con fenotipos promedio.</td>
+            </tr>
+            <tr>
+                <td>1977 (Sequía Severa - La Niña)</td>
+                <td>Escasez total; solo quedaron semillas grandes y muy duras.</td>
+                <td><strong>Picos grandes (>10 mm de profundidad) y robustos.</strong></td>
+                <td>Mortandad del 80%. Desplazamiento direccional: las crías nacieron con picos más grandes.</td>
+            </tr>
+            <tr>
+                <td>1983 (Lluvias Extremas - El Niño)</td>
+                <td>Sobreabundancia repentina de semillas muy pequeñas.</td>
+                <td>Picos pequeños y ágiles. Los picos grandes fueron desventajosos.</td>
+                <td>Recuperación rápida con desplazamiento fenotípico inverso hacia picos reducidos.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 id="caso2">5.2. Caso 2: Melanismo industrial inducido por contaminación (Polilla <em>Biston betularia</em>)</h3>
+    <p>Estudiado inicialmente por H.B. Kettlewell en Inglaterra, este caso evidencia cómo la alteración del entorno por la actividad humana modifica radicalmente las presiones de depredación. Históricamente, la corteza de los árboles británicos estaba cubierta de líquenes de tonalidades claras, lo que brindaba un camuflaje natural a las polillas blancas, mientras que las oscuras (melánicas) eran devoradas rápidamente por las aves. Sin embargo, la intensa contaminación por hollín durante el siglo XIX mató los líquenes y ennegreció los troncos.</p>
+    
+    <p>Este fenómeno, conocido como melanismo industrial, representa un claro ejemplo de selección natural direccional. Antes de la Revolución Industrial, el gen que determinaba la coloración oscura era escaso porque resultaba perjudicial. Sin embargo, al invertirse las condiciones ambientales, este alelo previamente "desventajoso" se convirtió en la clave de la supervivencia, cambiando drásticamente la frecuencia fenotípica poblacional. Esto demuestra que la aptitud de un rasgo biológico no es absoluta, sino estrictamente dependiente de su entorno ecológico actual.</p>
+    
+    <table>
+        <caption>Tabla 2: Frecuencia de fenotipos en Biston betularia en la región de Manchester antes, durante y después de la revolución industrial.</caption>
+        <thead>
+            <tr>
+                <th>Periodo Histórico</th>
+                <th>Estado Ambiental de los Troncos (Liquen)</th>
+                <th>Frecuencia Forma Típica (Clara)</th>
+                <th>Frecuencia Forma Carbonaria (Oscura)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Pre-Industrial (Antes de 1848)</td>
+                <td>Troncos cubiertos de liquen claro</td>
+                <td><strong>> 98%</strong></td>
+                <td>< 2% (Rara mutación)</td>
+            </tr>
+            <tr>
+                <td>Cúspide Industrial (1895)</td>
+                <td>Hollín severo, muerte del liquen, troncos negros</td>
+                <td>< 5%</td>
+                <td><strong>> 95%</strong></td>
+            </tr>
+            <tr>
+                <td>Post-Regulaciones (Ley de Aire Limpio 1956)</td>
+                <td>Recuperación del liquen y limpieza del aire</td>
+                <td><strong>~ 80%</strong></td>
+                <td>~ 20% (En declive)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 id="caso3">5.3. Caso 3: Evolución acelerada y salud pública (Resistencia bacteriana en <em>Staphylococcus aureus</em>)</h3>
+    <p>A nivel microscópico, la introducción masiva de antibióticos por parte de la medicina humana a mediados del siglo XX generó un ambiente súbitamente letal para las bacterias patógenas. Sin embargo, los microorganismos poseen herramientas evolutivas formidables. Debido a su rápida tasa de reproducción celular y su capacidad para adquirir genes de otras especies mediante transferencia genética horizontal (plásmidos), las mutaciones protectoras han proliferado, creando los llamados "superbacterias".</p>
+    
+    <p>A diferencia de los organismos multicelulares complejos cuya macroevolución suele tardar milenios en hacerse notoria, bacterias como el <em>Staphylococcus aureus</em> pueden dar origen a una nueva generación en cuestión de minutos. Esta vertiginosa tasa reproductiva permite que una sola mutación beneficiosa (como la producción de enzimas que destruyen la penicilina) se propague por toda una colonia en tiempo récord, convirtiendo el uso inapropiado e indiscriminado de fármacos en un acelerador evolutivo incontrolable, catalogado hoy como una grave amenaza global de salud pública.</p>
+    
+    <table>
+        <caption>Tabla 3: Cronograma de evolución y adaptación de resistencia antimicrobiana en S. aureus.</caption>
+        <thead>
+            <tr>
+                <th>Fármaco / Presión Selectiva</th>
+                <th>Año de Introducción Clínica</th>
+                <th>Año de Primer Caso de Resistencia Documentada</th>
+                <th>Tiempo de Evolución Adaptativa</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Penicilina</td>
+                <td>1943</td>
+                <td>1947</td>
+                <td><strong>4 años</strong> (Producción de penicilinasa)</td>
+            </tr>
+            <tr>
+                <td>Meticilina</td>
+                <td>1960</td>
+                <td>1961 (Origen del SARM)</td>
+                <td><strong>1 año</strong> (Alteración de proteínas de unión PBP2a)</td>
+            </tr>
+            <tr>
+                <td>Vancomicina (Último recurso)</td>
+                <td>1958</td>
+                <td>2002 (Aparición de SARV)</td>
+                <td><strong>44 años</strong> (Pared celular engrosada)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 id="caso4">5.4. Caso 4: Macroevolución y registro fósil (Evolución de los Équidos)</h3>
+    <p>El registro fósil del caballo (familia Equidae) es uno de los ejemplos más completos, continuos y documentados en la historia de la biología evolutiva para ilustrar la selección direccional prolongada. A lo largo de aproximadamente 55 millones de años, las alteraciones climáticas a nivel global transformaron drásticamente gran parte de Norteamérica, pasando de ser densos y húmedos bosques tropicales a extensas llanuras y sabanas áridas (pastizales).</p>
+    
+    <p>La secuencia estratigráfica desmiente la falsa idea de que la evolución es lineal hacia la "perfección"; más bien, ilustra un linaje ramificado donde muchos murieron, pero los que dieron origen al género moderno (<em>Equus</em>) sobrevivieron porque acumularon adaptaciones biomecánicas sucesivas. El entorno abierto carecía de escondites, convirtiendo a la velocidad de huida en el rasgo de mayor supervivencia. Esto presionó evolutivamente la anatomía hasta fusionar los dedos en una sola pezuña robusta forrada en queratina para potenciar la carrera, y modificó los molares, haciéndolos altos y complejos para moler eficientemente la hierba dura llena de cristales de sílice.</p>
+    
+    <table>
+        <caption>Tabla 4: Secuencia cronológica y morfológica de la evolución de los équidos.</caption>
+        <thead>
+            <tr>
+                <th>Época Geológica</th>
+                <th>Especie Representativa</th>
+                <th>Características Morfológicas (Extremidades)</th>
+                <th>Dieta y Dentadura</th>
+                <th>Hábitat Predominante</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Eoceno (~55 millones de años)</td>
+                <td><em>Hyracotherium (Eohippus)</em></td>
+                <td>Tamaño de perro. 4 dedos en patas delanteras, 3 en traseras.</td>
+                <td>Coronas bajas. Ramoneador (hojas y frutos blandos).</td>
+                <td>Bosques densos y pantanosos.</td>
+            </tr>
+            <tr>
+                <td>Oligoceno (~34 millones de años)</td>
+                <td><em>Mesohippus</em></td>
+                <td>Tamaño de oveja. 3 dedos, pero el peso recae en el central.</td>
+                <td>Coronas ligeramente más altas. Transición a dieta mixta.</td>
+                <td>Bosques abiertos y matorrales.</td>
+            </tr>
+            <tr>
+                <td>Mioceno (~23 millones de años)</td>
+                <td><em>Merychippus</em></td>
+                <td>Mayor tamaño. 3 dedos, pero los laterales ya no tocan el suelo.</td>
+                <td>Coronas altas con crestas complejas. Pastador estricto.</td>
+                <td>Praderas y llanuras abiertas.</td>
+            </tr>
+            <tr>
+                <td>Pleistoceno - Presente</td>
+                <td><em>Equus</em> (Caballo moderno)</td>
+                <td>Gran alzada. Un solo dedo (pezuña única), adaptado a la velocidad.</td>
+                <td>Dientes de crecimiento continuo muy complejos.</td>
+                <td>Sabanas, estepas y llanuras.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="salto-pagina"></div>
+
+    <h2 id="analisis" class="seccion-titulo">6. Análisis de datos e información</h2>
+    <p>Al contrastar sistemáticamente la información científica y los datos obtenidos en las tres unidades de estudio, se revelan patrones subyacentes irrefutables respecto a la mecánica evolutiva. El análisis descriptivo arroja las siguientes observaciones de alto nivel:</p>
+    
+    <ol>
+        <li><strong>Direccionalidad dictada por el entorno:</strong> En la <em>Tabla 1</em>, los datos evidencian una <strong>selección natural oscilatoria</strong>. La sequía extrema favoreció estadísticamente a los pinzones con picos de >10 mm, ya que podían romper las semillas de <em>Tribulus</em>. Sin embargo, cuando el entorno cambió abruptamente en 1983, un pico grande pasó de ser una ventaja a una desventaja calórica, demostrando que <em>la evolución no tiene una dirección predeterminada hacia la "perfección", sino hacia la adaptación local y temporal</em>.</li>
+        
+        <li><strong>Frecuencias alélicas y depredación visual:</strong> La <em>Tabla 2</em> ilustra la evolución a través de la presión de depredación. La mutación del alelo que produce melanina (forma <em>carbonaria</em>) siempre existió en la población (< 2%). No obstante, fue el cambio inducido por la industria humana lo que alteró el valor de supervivencia de ese alelo. Los datos del siglo XX corroboran empíricamente el modelo de Charles Darwin: al retornar el liquen claro tras las leyes de control de emisiones, la selección natural operó en sentido inverso, restaurando a la forma típica (clara) a un 80% de frecuencia poblacional.</li>
+
+        <li><strong>Microevolución en la salud pública (Velocidad evolutiva):</strong> El análisis de la <em>Tabla 3</em> advierte sobre el poder de la presión selectiva humana intensa. A diferencia de los vertebrados, <em>S. aureus</em> demostró la capacidad de generar genotipos resistentes a antibióticos sintéticos (meticilina) en tan solo un año de su introducción. Esto comprueba que la velocidad de la evolución es proporcional a la intensidad de la presión de selección y a la tasa de reproducción de la especie.</li>
+        
+        <li><strong>Macroevolución direccional a largo plazo:</strong> El registro paleontológico de los équidos (<em>Tabla 4</em>) ilustra cómo la evolución actúa durante millones de años. La transformación paulatina de patas con varios dedos a una sola pezuña fuerte, y de dientes simples a coronas altas, responde a una necesidad biomecánica y digestiva para sobrevivir en un ambiente que pasó de ser un bosque cerrado a praderas abiertas, donde la principal defensa era la velocidad de huida.</li>
+    </ol>
+
+    <p><strong>Conclusiones del análisis:</strong><br>
+    Las variaciones en el medio ambiente (clima, contaminación, agentes químicos) actúan indefectiblemente como filtros de supervivencia (presiones de selección). Las poblaciones no evolucionan por necesidad consciente, sino que las modificaciones heredables preexistentes en la diversidad genética de la población prosperan o perecen según las reglas de supervivencia del nuevo entorno. El registro contemporáneo en aves, insectos y bacterias prueba que la evolución de las especies es un hecho biológico transversal a todos los reinos vivos.</p>
+
+    <h2 id="evaluacion" class="seccion-titulo">7. Evaluación</h2>
+    <p>El diseño metodológico de tipo descriptivo-comparativo utilizado demostró ser altamente eficaz para alcanzar los objetivos de indagación planteados. La triangulación de conocimientos científicos de disciplinas aparentemente distantes (ecología ornitológica, entomología urbana y microbiología clínica) permitió sustentar de forma holística cómo opera la selección natural en diferentes magnitudes y escalas temporales.</p>
+    
+    <p><strong>Ajustes realizados en el proceso:</strong> Durante la fase de investigación, el plan original contemplaba analizar únicamente el registro fósil de los cetáceos (evolución de <em>Pakicetus</em> a ballenas modernas). Sin embargo, se realizó un ajuste metodológico sustituyendo este análisis paleobiológico por la observación de casos de evolución contemporánea (bacterias y polillas). Esta modificación permitió cumplir de forma más rigurosa con el objetivo de demostrar el impacto evolutivo "observable y cuantificable" en escalas de tiempo humanas, dotando al informe de mayor contundencia y aplicabilidad práctica hacia problemas modernos (como la resistencia bacteriana).</p>
+    
+    <p>Las conclusiones logradas guardan total coherencia con la síntesis evolutiva moderna, verificando que los fenotipos poblacionales son maleables frente a las crisis ambientales temporales.</p>
+
+    <h2 id="referencias" class="seccion-titulo">8. Referencias bibliográficas</h2>
+    <p>
+        <ul>
+            <li>Campbell, N. A., & Reece, J. B. (2007). <em>Biología</em> (7ma ed.). Editorial Médica Panamericana.</li>
+            <li>Darwin, C. (1859). <em>El origen de las especies por medio de la selección natural</em>. John Murray.</li>
+            <li>Grant, P. R., & Grant, B. R. (2014). <em>40 Years of Evolution: Darwin's Finches on Daphne Major Island</em>. Princeton University Press.</li>
+            <li>Kettlewell, H. B. D. (1955). Selection experiments on industrial melanism in the Lepidoptera. <em>Heredity</em>, 9(3), 323-342.</li>
+            <li>Ministerio de Educación del Perú (MINEDU). (2016). <em>Currículo Nacional de la Educación Básica</em>. Lima, Perú.</li>
+            <li>Organización Mundial de la Salud (OMS). (2020). <em>Resistencia a los antimicrobianos: Datos y cifras</em>. Ginebra, Suiza.</li>
+        </ul>
+    </p>
+
+    <div class="salto-pagina"></div>
+
+    <!-- ================= ANEXOS ================= -->
+    <h2 id="anexos" class="seccion-titulo">9. Anexos</h2>
+    <p>En esta sección se adjuntan las evidencias visuales y esquemáticas que complementan el desarrollo del proyecto de indagación descriptiva, sirviendo como respaldo gráfico de los casos abordados en el documento.</p>
+
+    <div class="anexo-item">
+        <h3>Anexo 1: Línea de tiempo de la evolución de los caballos (Caso 4)</h3>
+        <p><em>Diagrama evolutivo que ilustra la transición morfológica desde el Hyracotherium hasta el Equus moderno, detallando los cambios en las extremidades y el tamaño corporal en relación con la adaptación a llanuras abiertas.</em></p>
+        <div style="text-align: center; margin-top: 15px;">
+            <img src="IMAGEN1.PNG" alt="Línea de tiempo de la evolución de los caballos" style="max-width: 100%; height: auto; border: 2px solid #bdc3c7; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        </div>
+    </div>
+
+    <div class="anexo-item">
+        <h3>Anexo 2: Cambios morfológicos en el pico de Geospiza fortis (Caso 1)</h3>
+        <p><em>Diagrama comparativo que muestra la diferencia anatómica entre los individuos sobrevivientes a la sequía de 1977 (adaptados a semillas duras) versus las generaciones posteriores a las lluvias extremas.</em></p>
+        <div style="text-align: center; margin-top: 15px;">
+            <img src="IMAGEN2.PNG" alt="Evolución de Pinzones" style="max-width: 100%; height: auto; border: 2px solid #bdc3c7; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        </div>
+    </div>
+
+    <div class="anexo-item">
+        <h3>Anexo 3: Evidencia visual del Melanismo Industrial (Caso 2)</h3>
+        <p><em>Fotografía histórica del camuflaje diferencial de la polilla Biston betularia. Se observa la forma típica contrastando contra un tronco oscurecido por hollín, mientras la forma carbonaria se mimetiza eficazmente.</em></p>
+        <div style="text-align: center; margin-top: 15px;">
+            <img src="IMAGEN3.PNG" alt="Biston betularia en tronco oscurecido" style="max-width: 100%; height: auto; border: 2px solid #bdc3c7; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        </div>
+    </div>
+    
+    <div class="anexo-item">
+        <h3>Anexo 4: Fotografía del autor durante el desarrollo de la indagación</h3>
+        <p><em>Evidencia del estudiante Uriel Carrasco Saucedo realizando el análisis de datos, revisión bibliográfica sistemática en bases de datos y construcción de las tablas comparativas. (Requisito de rúbrica).</em></p>
+        <div style="text-align: center; margin-top: 15px;">
+            <img src="FOTO_AUTOR.JPG" alt="Autor Uriel Carrasco" style="max-width: 100%; height: auto; border: 2px solid #bdc3c7; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        </div>
+    </div>
+
+</body>
+</html>
